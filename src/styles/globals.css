@@ -21,3 +21,7 @@ html {
 .custom-flex {
   display: flex;
 }
+
+.custom-ml{
+  margin-left: 30rem;
+}
