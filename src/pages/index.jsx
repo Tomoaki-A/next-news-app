@@ -10,7 +10,7 @@ export default function Home(props) {
   return (
     <div className="">
       <Sidebar />
-      <div className="custom-flex ml-96">
+      <div className="custom-flex custom-ml">
         <MainNews articles={articles}/>
         <SubContents />
       </div>
@@ -31,6 +31,6 @@ export const getStaticProps = async () => {
     props: {
       articles,
     },
-    revalidate: 60 * 10,
+    revalidate: 60,
   };
 };
