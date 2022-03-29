@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
 import { MainNews } from "../components/MainNews";
 import { Sidebar } from "../components/Sidebar";
 import { SubContents } from "../components/SubContents";
-import { useFetch } from "../hooks/useFetch";
 
 export default function Home(props) {
 
