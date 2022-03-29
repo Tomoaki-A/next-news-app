@@ -1,8 +1,6 @@
 import Link from "next/link";
 
 export const MainNews = (props) => {
-  console.log(props);
-
   // 経過時間を返す
   const diff = (published) => {
     const now = new Date();
@@ -25,10 +23,14 @@ export const MainNews = (props) => {
                       <div className="flex items-start justify-between">
                         <div>
                           <h2 className="text-2xl mb-3">{item.title}</h2>
-                          <div>{diff(item.publishedAt)}時間前</div>
+                          <div className="text-xl text-gray-400">{diff(item.publishedAt)}時間前</div>
                         </div>
-                        <div className="w-64">
-                          <img className="w-full" src={item.urlToImage} alt="" />
+                        <div className="w-64 max-h-64">
+                          <img
+                            className="w-full h-hull"
+                            src={item.urlToImage}
+                            alt=""
+                          />
                         </div>
                       </div>
                     </a>
