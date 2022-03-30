@@ -1,6 +1,5 @@
 import { MainNews } from "../../components/MainNews";
 import { Sidebar } from "../../components/Sidebar";
-import { SubContents } from "../../components/SubContents";
 
 export default function business(props) {
   const articles = props.articles;
@@ -10,7 +9,6 @@ export default function business(props) {
       <Sidebar />
       <div className="custom-flex custom-ml">
         <MainNews articles={articles} />
-        <SubContents />
       </div>
     </div>
   );
