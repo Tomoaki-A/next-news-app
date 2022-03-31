@@ -17,7 +17,7 @@ export const MainNews = (props) => {
         {props
           ? props.articles.map((item, index) => {
               return (
-                <li key={index} className="border rounded-md p-8 mb-6">
+                <li key={index} className="border rounded-2xl p-8 mb-6">
                   <Link href={item.url}>
                     <a target="_blank">
                       <div className="flex items-start justify-between">
