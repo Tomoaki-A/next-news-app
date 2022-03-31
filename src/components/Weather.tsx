@@ -46,7 +46,7 @@ export const Weather = (props) => {
             </div>
           </div>
           <div>
-            <img src="/weathers/01.png" alt="" />
+            <img src={`/weathers/${currentWeather}.png`} alt="" />
           </div>
         </div>
         <ul className="flex justify-between">
@@ -56,13 +56,15 @@ export const Weather = (props) => {
                   return;
                 }
                 const weekWeather = getWeek(item);
+                const weather = weekWeather.item.weather[0].main
+                
 
                 if (weekWeather.isToday) {
                   return (
                     <li key={index} className="text-center">
                       <div className="text-2xl mb-2">Today</div>
-                      <div className="w-12 mx-auto">
-                        <img className="w-full h-full" src="/weathers/01.png" alt="" />
+                      <div className="w-12 mx-auto mb-1">
+                        <img className="w-full h-full" src={`/weathers/${weather}.png`} alt="" />
                       </div>
                       <div className="text-xl">
                         {test(weekWeather.item.temp.day)}
@@ -75,8 +77,8 @@ export const Weather = (props) => {
                 return (
                   <li key={index} className="text-center">
                     <div className="text-2xl mb-2">{week[weekWeather.week]}</div>
-                    <div className="w-12 mx-auto">
-                        <img className="w-full h-full" src="/weathers/01.png" alt="" />
+                    <div className="w-12 mx-auto mb-1">
+                    <img className="w-full h-full" src={`/weathers/${weather}.png`} alt="" />
                       </div>
                     <div className="text-xl">
                       {test(weekWeather.item.temp.day)}
