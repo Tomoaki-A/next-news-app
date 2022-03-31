@@ -18,7 +18,7 @@ export default function Home(props) {
 
 export const getStaticProps = async () => {
   // NewsAPIのトップ記事の情報を取得
-  const pageSize = 10; // 取得したい記事の数
+  const pageSize = 15; // 取得したい記事の数
   const articleRes = await fetch(
     `https://newsapi.org/v2/top-headlines?country=jp&pageSize=${pageSize}&apiKey=278569a1c91541bbb0706c4f4ea3855a`
   );

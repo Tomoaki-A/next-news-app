@@ -1,16 +1,13 @@
+import { useRoundDown } from "../hooks/useRoundDown";
+
 const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export const Weather = (props) => {
   const weathersData = props.weathers;
-  const current = props.weathers.current.temp;
+  const currentTemp = weathersData.current.temp;
   const currentWeather = weathersData.current.weather[0].main;
   const weeklyWeather = weathersData.daily;
 
-  //   小数点切り捨て
-  const test = (arg) => {
-    const temp = parseInt(arg, 10);
-    return temp;
-  };
 
   const getWeek = (item) => {
     const today = new Date();
@@ -41,7 +38,7 @@ export const Weather = (props) => {
           <div>
             <div className="text-2xl">{currentWeather}</div>
             <div>
-              <span className="text-5xl">{test(current)}</span>
+              <span className="text-5xl">{useRoundDown(currentTemp)}</span>
               <span className="text-xl">°C</span>
             </div>
           </div>
@@ -50,44 +47,30 @@ export const Weather = (props) => {
           </div>
         </div>
         <ul className="flex justify-between">
-          {weeklyWeather
-            ? weeklyWeather.map((item, index) => {
+          {weeklyWeather.map((item, index) => {
                 if (index > 3) {
                   return;
                 }
                 const weekWeather = getWeek(item);
                 const weather = weekWeather.item.weather[0].main
                 
-
-                if (weekWeather.isToday) {
                   return (
                     <li key={index} className="text-center">
-                      <div className="text-2xl mb-2">Today</div>
+                      <div className="text-2xl mb-2">
+                        {
+                          weekWeather.isToday ? <span>Today</span> : <span>{week[weekWeather.week]}</span>
+                        }
+                      </div>
                       <div className="w-12 mx-auto mb-1">
                         <img className="w-full h-full" src={`/weathers/${weather}.png`} alt="" />
                       </div>
                       <div className="text-xl">
-                        {test(weekWeather.item.temp.day)}
+                        {useRoundDown(weekWeather.item.temp.day)}
                         <span className="text-lg">°C</span>
                       </div>
                     </li>
                   );
-                }
-
-                return (
-                  <li key={index} className="text-center">
-                    <div className="text-2xl mb-2">{week[weekWeather.week]}</div>
-                    <div className="w-12 mx-auto mb-1">
-                    <img className="w-full h-full" src={`/weathers/${weather}.png`} alt="" />
-                      </div>
-                    <div className="text-xl">
-                      {test(weekWeather.item.temp.day)}
-                      <span className="text-lg">°C</span>
-                    </div>
-                  </li>
-                );
-              })
-            : null}
+              })}
         </ul>
       </div>
     </div>
