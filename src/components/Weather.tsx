@@ -8,7 +8,7 @@ export const Weather = (props) => {
   const currentWeather = weathersData.current.weather[0].main;
   const weeklyWeather = weathersData.daily;
 
-
+  // 表示するデータがTodayなのか~曜日なのか
   const getWeek = (item) => {
     const today = new Date();
     const todayDate = today.getDate();
@@ -32,7 +32,7 @@ export const Weather = (props) => {
 
   return (
     <div className="mt-12 w-1/4 border rounded-2xl h-full">
-      <h2 className="text-4xl px-4 py-6 border-b">Tokyo</h2>
+      <h2 className="text-4xl px-4 py-6 border-b">{weathersData.timezone}</h2>
       <div className="px-12 py-6">
         <div className="flex justify-between mb-12">
           <div>
@@ -48,29 +48,35 @@ export const Weather = (props) => {
         </div>
         <ul className="flex justify-between">
           {weeklyWeather.map((item, index) => {
-                if (index > 3) {
-                  return;
-                }
-                const weekWeather = getWeek(item);
-                const weather = weekWeather.item.weather[0].main
-                
-                  return (
-                    <li key={index} className="text-center">
-                      <div className="text-2xl mb-2">
-                        {
-                          weekWeather.isToday ? <span>Today</span> : <span>{week[weekWeather.week]}</span>
-                        }
-                      </div>
-                      <div className="w-12 mx-auto mb-1">
-                        <img className="w-full h-full" src={`/weathers/${weather}.png`} alt="" />
-                      </div>
-                      <div className="text-xl">
-                        {useRoundDown(weekWeather.item.temp.day)}
-                        <span className="text-lg">°C</span>
-                      </div>
-                    </li>
-                  );
-              })}
+            if (index > 3) {
+              return;
+            }
+            const weekWeather = getWeek(item);
+            const weather = weekWeather.item.weather[0].main;
+
+            return (
+              <li key={index} className="text-center">
+                <div className="text-2xl mb-2">
+                  {weekWeather.isToday ? (
+                    <span>Today</span>
+                  ) : (
+                    <span>{week[weekWeather.week]}</span>
+                  )}
+                </div>
+                <div className="w-12 mx-auto mb-1">
+                  <img
+                    className="w-full h-full"
+                    src={`/weathers/${weather}.png`}
+                    alt=""
+                  />
+                </div>
+                <div className="text-xl">
+                  {useRoundDown(weekWeather.item.temp.day)}
+                  <span className="text-lg">°C</span>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
