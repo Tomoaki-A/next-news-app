@@ -12,7 +12,7 @@ export const MainNews = (props) => {
 
   return (
     <div className="w-2/3 p-8 mt-12">
-      <h2 className="main-heading mb-12">Headline</h2>
+      <h2 className="main-heading mb-12">{props.title ? props.title : "Headline"}</h2>
       <ul className="">
         {props
           ? props.articles.map((item, index) => {
