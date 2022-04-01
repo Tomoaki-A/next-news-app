@@ -30,6 +30,11 @@ export const Weather = (props) => {
     };
   };
 
+  const roundDown = (arg) => {
+    const temp = parseInt(arg, 10);
+    return temp;
+  };
+
   return (
     <div className="mt-12 w-1/4 border rounded-2xl h-full">
       <h2 className="text-4xl px-4 py-6 border-b">{weathersData.timezone}</h2>
@@ -38,7 +43,7 @@ export const Weather = (props) => {
           <div>
             <div className="text-2xl">{currentWeather}</div>
             <div>
-              <span className="text-5xl">{useRoundDown(currentTemp)}</span>
+              <span className="text-5xl">{roundDown(currentTemp)}</span>
               <span className="text-xl">°C</span>
             </div>
           </div>
@@ -71,7 +76,7 @@ export const Weather = (props) => {
                   />
                 </div>
                 <div className="text-xl">
-                  {useRoundDown(weekWeather.item.temp.day)}
+                  {roundDown(weekWeather.item.temp.day)}
                   <span className="text-lg">°C</span>
                 </div>
               </li>
