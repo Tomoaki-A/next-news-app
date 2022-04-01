@@ -4,10 +4,10 @@ import { MainNews } from "../../components/MainNews";
 import { Weather } from "../../components/Weather";
 
 export default function Topic(props) {
-  const router = useRouter();
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
+  // const router = useRouter();
+  // if (router.isFallback) {
+  //   return <div>Loading...</div>;
+  // }
 
   const articles = props.topicArticles;
   const weathers = props.weathers;
@@ -27,7 +27,7 @@ export default function Topic(props) {
 export async function getStaticPaths() {
   return {
     paths: [],
-    fallback: true,
+    fallback: "blocking",
   };
 }
 
