@@ -36,7 +36,7 @@ export const Weather: React.FC<WeatherProps> = (props) => {
   };
 
   return (
-    <div className="mt-12 w-1/4 border rounded-2xl h-full">
+    <div className="mt-12 border rounded-2xl h-full">
       <h2 className="text-4xl px-4 py-6 border-b">{weathersData.timezone}</h2>
       <div className="px-12 py-6">
         <div className="flex justify-between mb-12">

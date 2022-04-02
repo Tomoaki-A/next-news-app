@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { NewsProps } from "./types";
 
-export const MainNews: React.FC<NewsProps> = (props) => {
+export const Pickup = (props) => {
+  const pickup = props.pickup;
+
   const diff = (published) => {
     const now = new Date();
     const data = new Date(published);
@@ -17,25 +18,23 @@ export const MainNews: React.FC<NewsProps> = (props) => {
   };
 
   return (
-    <div className="w-2/3 p-8 mt-12">
-      <h2 className="main-heading mb-12">
-        {props.title ? props.title : "Headline"}
-      </h2>
-      <ul className="">
-        {props
-          ? props.articles.map((item, index) => {
-              return (
-                <li key={index} className="border rounded-2xl p-8 mb-6">
-                  <Link href={item.url}>
+    <div className="mt-12 border rounded-2xl h-full">
+      <h2 className="text-4xl px-4 py-6 border-b">PickUp News</h2>
+      <div className="px-12 py-6">
+        <ul>
+          {pickup.map((item, index) => {
+            return (
+              <li className="mb-10" key={index}>
+                <Link href={item.url}>
                     <a target="_blank">
                       <div className="flex items-start justify-between">
                         <div className="">
-                          <h2 className="text-2xl mb-3">{item.title}</h2>
-                          <div className="text-xl text-gray-400">
+                          <h2 className="text-xl mb-3">{item.title}</h2>
+                          <div className="text-lg text-gray-400">
                             {diff(item.publishedAt)}
                           </div>
                         </div>
-                        <div className="image-wrap">
+                        <div className="image-wrap-s">
                           {item.urlToImage ? (
                             <img
                               className="w-full h-full"
@@ -51,11 +50,11 @@ export const MainNews: React.FC<NewsProps> = (props) => {
                       </div>
                     </a>
                   </Link>
-                </li>
-              );
-            })
-          : null}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };

@@ -1,16 +1,21 @@
 import { MainNews } from "../components/MainNews";
+import { Pickup } from "../components/Pickup";
 import { Sidebar } from "../components/Sidebar";
 import { Weather } from "../components/Weather";
 
 export default function Home(props) {
   const articles = props.articles;
   const weathers = props.weathers;
+  const pickup = props.pickup;
   return (
     <div className="">
       <Sidebar />
       <div className="custom-flex custom-ml">
         <MainNews articles={articles} />
-        <Weather weathers={weathers}/>
+        <div className="mt-12 w-1/4 h-full">
+          <Weather weathers={weathers} pickup={pickup} />
+          <Pickup pickup={pickup} />
+        </div>
       </div>
     </div>
   );
@@ -25,6 +30,15 @@ export const getStaticProps = async () => {
   const articleJson = await articleRes.json();
   const articles = articleJson.articles;
 
+  // NewsAPIのピックアップ記事の情報を取得
+  const keyword = "software"; // キーワードで検索(ソフトウェア)
+  const pickupRes = await fetch(
+    `https://newsapi.org/v2/everything?q=${keyword}&language=jp&sortBy=popularity&pageSize=5&apiKey=278569a1c91541bbb0706c4f4ea3855a`
+  );
+  const pickupJson = await pickupRes.json();
+  const pickup = pickupJson.articles;
+
+  // weatherAPIで天気の情報を取得
   const weatherRes = await fetch(
     `https://api.openweathermap.org/data/2.5/onecall?lat=35.652832&lon=139.839478&units=metric&appid=ce4ff1a2cb4a0f6d6eb2623d8f9b0311`
   );
@@ -34,6 +48,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       articles,
+      pickup,
       weathers,
     },
     revalidate: 60,

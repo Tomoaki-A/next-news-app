@@ -31,3 +31,8 @@ html {
   width: 150px;
   height: 100px;
 }
+.image-wrap-s {
+  flex-shrink: 0;
+  width: 100px;
+  height: 75px;
+}
