@@ -22,6 +22,12 @@ html {
   display: flex;
 }
 
-.custom-ml{
+.custom-ml {
   margin-left: 30rem;
+}
+
+.image-wrap {
+  flex-shrink: 0;
+  width: 150px;
+  height: 100px;
 }

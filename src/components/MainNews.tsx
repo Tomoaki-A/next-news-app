@@ -21,15 +21,15 @@ export const MainNews = (props) => {
                   <Link href={item.url}>
                     <a target="_blank">
                       <div className="flex items-start justify-between">
-                        <div>
+                        <div className="">
                           <h2 className="text-2xl mb-3">{item.title}</h2>
                           <div className="text-xl text-gray-400">
                             {diff(item.publishedAt)}時間前
                           </div>
                         </div>
-                        <div className="w-64 max-h-64">
+                        <div className="image-wrap">
                           <img
-                            className="w-full h-hull"
+                            className="w-full h-full"
                             src={item.urlToImage}
                             alt=""
                           />
