@@ -1,6 +1,5 @@
 import Link from "next/link";
-import {NewsProps} from "./types";
-
+import { NewsProps } from "./types";
 
 export const MainNews: React.FC<NewsProps> = (props) => {
   const diff = (published) => {
@@ -13,7 +12,9 @@ export const MainNews: React.FC<NewsProps> = (props) => {
 
   return (
     <div className="w-2/3 p-8 mt-12">
-      <h2 className="main-heading mb-12">{props.title ? props.title : "Headline"}</h2>
+      <h2 className="main-heading mb-12">
+        {props.title ? props.title : "Headline"}
+      </h2>
       <ul className="">
         {props
           ? props.articles.map((item, index) => {
