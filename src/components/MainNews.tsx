@@ -30,11 +30,17 @@ export const MainNews: React.FC<NewsProps> = (props) => {
                           </div>
                         </div>
                         <div className="image-wrap">
-                          <img
-                            className="w-full h-full"
-                            src={item.urlToImage}
-                            alt=""
-                          />
+                          {item.urlToImage ? (
+                            <img
+                              className="w-full h-full"
+                              src={item.urlToImage}
+                              alt=""
+                            />
+                          ) : (
+                            <div className="flex h-full items-center justify-center">
+                              <div className="text-2xl">No Image...</div>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </a>
