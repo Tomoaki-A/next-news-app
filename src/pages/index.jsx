@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { MainNews } from "../components/MainNews";
 import { Pickup } from "../components/Pickup";
 import { Sidebar } from "../components/Sidebar";
@@ -9,10 +10,13 @@ export default function Home(props) {
   const pickup = props.pickup;
   return (
     <div className="">
+      <Head>
+        <title>Web News / Top Stories</title>
+      </Head>
       <Sidebar />
       <div className="custom-flex custom-ml">
         <MainNews articles={articles} />
-        <div className="mt-12 w-1/4 h-full">
+        <div className="mt-12 ml-10 w-1/4 h-full">
           <Weather weathers={weathers} pickup={pickup} />
           <Pickup pickup={pickup} />
         </div>
