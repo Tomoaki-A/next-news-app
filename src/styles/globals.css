@@ -23,7 +23,7 @@ html {
 }
 
 .custom-ml {
-  margin-left: 30rem;
+  margin-left: 22rem;
 }
 
 .image-wrap {
@@ -35,4 +35,8 @@ html {
   flex-shrink: 0;
   width: 100px;
   height: 75px;
+}
+
+.mt-143px {
+  margin-top: 86px;
 }
