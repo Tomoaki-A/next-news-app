@@ -1,8 +1,8 @@
-import { useRoundDown } from "../hooks/useRoundDown";
+import { WeatherProps } from "./types";
 
 const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-export const Weather = (props) => {
+export const Weather: React.FC<WeatherProps> = (props) => {
   const weathersData = props.weathers;
   const currentTemp = weathersData.current.temp;
   const currentWeather = weathersData.current.weather[0].main;

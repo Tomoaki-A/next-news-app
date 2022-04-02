@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { useDiff } from "../hooks/useDiff";
+import {NewsProps} from "./types";
 
-export const MainNews = (props) => {
+
+export const MainNews: React.FC<NewsProps> = (props) => {
   const diff = (published) => {
     const now = new Date();
     const data = new Date(published);
