@@ -15,6 +15,7 @@ export const MainNews: React.FC<NewsProps> = (props) => {
       return day + "日前";
     }
   };
+  
 
   return (
     <div className="w-2/3 p-8 mt-12">

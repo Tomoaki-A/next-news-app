@@ -10,6 +10,8 @@ export default function Topic(props) {
   //   return <div>Loading...</div>;
   // }
 
+  
+
   const articles = props.topicArticles;
   const weathers = props.weathers;
   const pickup = props.pickup;
@@ -22,7 +24,7 @@ export default function Topic(props) {
       </Head>
       <Sidebar />
       <div className="custom-flex custom-ml">
-        <MainNews articles={articles} />
+        <MainNews articles={articles} title={title}/>
         <div className="mt-12 ml-10 w-1/4 h-full">
           <Weather weathers={weathers} pickup={pickup} />
           <Pickup pickup={pickup} />
@@ -39,7 +41,7 @@ export async function getStaticPaths() {
   };
 }
 
-//params.idにはtest/???の???が入る
+//params.idにはtopicks/???の???が入る
 export async function getStaticProps({ params }) {
   const topicRes = await fetch(
     `https://newsapi.org/v2/top-headlines?country=jp&category=${params.id}&country=jp&apiKey=278569a1c91541bbb0706c4f4ea3855a`
